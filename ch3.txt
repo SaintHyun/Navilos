@@ -1,0 +1,4 @@
+1. navilos.ld 공백까지 똑같이 적어야한다.
+2. gdb-multiarch를 실행할 때는 쉘을 두 개를 열고 하나는 qemu-system을 실행하고 다른 쉘에서 gdb-multiacrh를 한다.
+3. x/4b 0 을 하면 십진수로 표현되므로, x/4x 0을 해서 봐야한다.
+4. makefile에서 arm-none-eabi-gdb는 없어서 gdb-multiarch로 하면 된다.
