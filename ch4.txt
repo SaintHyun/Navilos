@@ -1,0 +1,4 @@
+1. makefile 수정할 때 make gdb쪽 옵션에서 gdb-multiarch build/navilos.axf로 수정...
+2. makefile은 교재에서 수정했다는 부분만 고치지 말고 github에서 복사-붙여넣기 하고 gdb부분만 1번처럼 바꾸는게 신상에 이롭다.
+3. 헤더파일 오타 주의! stdint.h도 깃허브에 있으니 그거 복붙하자.
+4. stdint.h와 makefile 말고는 전부 타이핑을 하는 걸 추천한다.

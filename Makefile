@@ -7,9 +7,15 @@ LD = arm-none-eabi-ld
 OC = arm-none-eabi-objcopy
 
 LINKER_SCRIPT = ./navilos.ld
+MAP_FILE = build/navilos.map
 
-ARM_SRCS = $(wildcard boot/*.S)
-ARM_OBJS = $(patsubst boot/%.S, build/%.o, $(ARM_SRCS))
+ASM_SRCS = $(wildcard boot/*.S)
+ASM_OBJS = $(patsubst boot/%.S, build/%.os, $(ASM_SRCS))
+
+C_SRCS = $(wildcard boot/*.c)
+C_OBJS = $(patsubst boot/%.c, build/%.o, $(C_SRCS))
+
+INC_DIRS = -I include
 
 navilos = build/navilos.axf
 navilos_bin = build/navilos.bin
@@ -19,21 +25,25 @@ navilos_bin = build/navilos.bin
 all: $(navilos)
 
 clean:
-	@rm -rf build
-
+	@rm -fr build
+	
 run: $(navilos)
 	qemu-system-arm -M realview-pb-a8 -kernel $(navilos)
-
+	
 debug: $(navilos)
 	qemu-system-arm -M realview-pb-a8 -kernel $(navilos) -S -gdb tcp::1234,ipv4
-
+	
 gdb:
-	gdb-multiarch
-
-$(navilos): $(ARM_OBJS) $(LINKER_SCRIPT)
-	$(LD) -n -T $(LINKER_SCRIPT) -o $(navilos) $(ARM_OBJS)
+	gdb-multiarch build/navilos.axf
+	
+$(navilos): $(ASM_OBJS) $(C_OBJS) $(LINKER_SCRIPT)
+	$(LD) -n -T $(LINKER_SCRIPT) -o $(navilos) $(ASM_OBJS) $(C_OBJS) -Map=$(MAP_FILE)
 	$(OC) -O binary $(navilos) $(navilos_bin)
-
-build/%.o: boot/%.S
+	
+build/%.os: $(ASM_SRCS)
 	mkdir -p $(shell dirname $@)
-	$(AS) -march=$(ARCH) -mcpu=$(MCPU) -g -o $@ $<
+	$(CC) -march=$(ARCH) -mcpu=$(MCPU) $(INC_DIRS) -c -g -o $@ $<
+
+build/%.o: $(C_SRCS)
+	mkdir -p $(shell dirname $@)
+	$(CC) -march=$(ARCH) -mcpu=$(MCPU) $(INC_DIRS) -c -g -o $@ $<
