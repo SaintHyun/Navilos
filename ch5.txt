@@ -1,0 +1,5 @@
+1. 5.4절 printf 만들 때 stdint.h에 #define NULL ((void*)0) 추가
+2. printf 만들 때 stdio.c에 
+#define PRINTF_BUF_LEN  1024 
+static char printf_buf[PRINTF_BUF_LEN];   // 1KB
+추가
