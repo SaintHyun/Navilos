@@ -1,4 +1,6 @@
 #include "stdint.h"
+#include "stdbool.h"
+
 #include "HalUart.h"
 #include "HalInterrupt.h"
 #include "stdio.h"

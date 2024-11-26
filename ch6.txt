@@ -1,0 +1,2 @@
+1. memio.h 주의
+2. stdbool.h 추가해야함

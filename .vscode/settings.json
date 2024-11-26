@@ -4,6 +4,7 @@
         "*.rmd": "markdown",
         "stdint.h": "c",
         "stdio.h": "c",
-        "interrupt.h": "c"
+        "interrupt.h": "c",
+        "haluart.h": "c"
     }
 }

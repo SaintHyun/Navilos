@@ -5,6 +5,8 @@
 
 extern volatile PL011_t* Uart;
 
+static void interrupt_handler(void);
+
 void Hal_uart_init(void)
 {
     // Enable UART
