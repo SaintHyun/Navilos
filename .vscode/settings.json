@@ -3,6 +3,7 @@
         ".fantomasignore": "ignore",
         "*.rmd": "markdown",
         "stdint.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "interrupt.h": "c"
     }
 }
