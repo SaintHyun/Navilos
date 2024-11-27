@@ -5,6 +5,8 @@
         "stdint.h": "c",
         "stdio.h": "c",
         "interrupt.h": "c",
-        "haluart.h": "c"
+        "haluart.h": "c",
+        "timer.h": "c",
+        "halinterrupt.h": "c"
     }
 }
