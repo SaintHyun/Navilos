@@ -7,6 +7,8 @@
         "interrupt.h": "c",
         "haluart.h": "c",
         "timer.h": "c",
-        "halinterrupt.h": "c"
+        "halinterrupt.h": "c",
+        "task.h": "c",
+        "kernel.h": "c"
     }
 }
