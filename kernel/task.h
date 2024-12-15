@@ -17,7 +17,7 @@ typedef struct KernelTaskContext_t
 
 typedef struct KernelTcb_t
 {
-    uint32_t sp;
+    uint32_t sp;    // 포인터가 아닌 이유: 주소값 그 자체만을 저장하고 있는 것이 목적이기 때문. *sp = ??? 이런 방식으로 사용하지 않는다.
     uint8_t* stack_base;
 } KernelTcb_t;
 

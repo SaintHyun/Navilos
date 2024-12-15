@@ -9,6 +9,8 @@
         "timer.h": "c",
         "halinterrupt.h": "c",
         "task.h": "c",
-        "kernel.h": "c"
+        "kernel.h": "c",
+        "stdbool.h": "c",
+        "event.h": "c"
     }
 }
